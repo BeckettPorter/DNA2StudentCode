@@ -25,7 +25,7 @@ public class DNA
         while (index <= sequence.length() - strLength)
         {
             // Only bother checking for the STR if sequence at the current index is the same as the start of the STR.
-            if (sequence.charAt(index) == STR.charAt(0) && sequence.substring(index, index + strLength).equals(STR))
+            if (sequence.charAt(index) == STR.charAt(0) && STR.equals(sequence.substring(index, index + strLength)))
             {
                 // If incrementing the current number of STRs found in a row would be greater than the current max
                 // number found in a row, set this new amount to the max found.
