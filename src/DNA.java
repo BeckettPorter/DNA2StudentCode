@@ -14,14 +14,10 @@
 public class DNA
 {
     public static final int RADIX = 4;
-    public static final long largePrime =   2147483647;
 
     public static int STRCount(String sequence, String STR)
     {
-
-
         return searchHashes(sequence, STR);
-
     }
 
 
@@ -36,11 +32,15 @@ public class DNA
         int maxFound = 0;
         long currentHash = hashSingleString(sequence.substring(0, target.length()));
         int targetLength = target.length();
+        long adjustedRadix = 1;
+
+        for (int i = 0; i < targetLength - 1; i++)
+        {
+            adjustedRadix *= RADIX;
+        }
 
         for (int i = 0; i < sequence.length() - target.length(); i++)
         {
-            currentHash = hashNextLetter(sequence.charAt(0), sequence.charAt(i + targetLength), currentHash, i);
-
             if (currentHash == targetHash)
             {
                 if (++currentNumFound > maxFound)
@@ -53,23 +53,20 @@ public class DNA
             {
                 currentNumFound = 0;
             }
+            currentHash = hashNextLetter(sequence.charAt(i), sequence.charAt(i + targetLength), currentHash, adjustedRadix);
         }
 
         return maxFound;
     }
 
-    private static long hashNextLetter(char oldChar, char nextChar, long currentHash, int index)
+    // Something wrong with this I think.
+    private static long hashNextLetter(char oldChar, char nextChar, long currentHash, long adjustedRadix)
     {
-        int oldCharVal = mapChar(oldChar);
-        int nextCharVal = mapChar(nextChar);
-
         // Remove the hash value for the first char.
-        // TODO: Fix this, need to do radix power thing somehow?
-        long adjustedRadix = (long) Math.pow((double) currentHash, index);
-        currentHash = ((currentHash + largePrime) - oldCharVal * adjustedRadix % largePrime) % largePrime;
+        currentHash = ((currentHash) - mapChar(oldChar) * adjustedRadix);
 
         // Then add the next char
-        currentHash = ((currentHash * RADIX) + nextCharVal) % largePrime;
+        currentHash = ((currentHash) + mapChar(nextChar));
 
         return currentHash;
     }
@@ -80,7 +77,7 @@ public class DNA
 
         for (int i = 0; i < str.length(); i++)
         {
-            hash = (RADIX * hash + mapChar(str.charAt(i))) % largePrime;
+            hash = (RADIX * hash + mapChar(str.charAt(i)));
         }
         return hash;
     }
