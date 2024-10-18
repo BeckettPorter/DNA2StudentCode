@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d822f69-9e3c-4e2b-8ee1-11779bb646bd" name="Changes" comment="Tried to make it run faster by converting strings to ints, did not work.">
+    <list default="true" id="6d822f69-9e3c-4e2b-8ee1-11779bb646bd" name="Changes" comment="Changed a bit to maybe optimize it but it runs the same :(">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WORK_LOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/WORK_LOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DNA.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,13 +96,22 @@
       <option name="project" value="LOCAL" />
       <updated>1728671353243</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Changed a bit to maybe optimize it but it runs the same :(">
+      <option name="closed" value="true" />
+      <created>1728688885267</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728688885267</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial commit but I lowkey figured it out?" />
     <MESSAGE value="Tried to make it run faster by converting strings to ints, did not work." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tried to make it run faster by converting strings to ints, did not work." />
+    <MESSAGE value="Changed a bit to maybe optimize it but it runs the same :(" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed a bit to maybe optimize it but it runs the same :(" />
   </component>
 </project>
