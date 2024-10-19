@@ -63,10 +63,10 @@ public class DNA
     private static long hashNextLetter(char oldChar, char nextChar, long currentHash, long adjustedRadix)
     {
         // Remove the hash value for the first char.
-        currentHash = ((currentHash) - mapChar(oldChar) * adjustedRadix);
+        currentHash = ((currentHash) - mapChar(oldChar) * adjustedRadix) * RADIX;
 
         // Then add the next char
-        currentHash = ((currentHash) + mapChar(nextChar));
+        currentHash += mapChar(nextChar);
 
         return currentHash;
     }
