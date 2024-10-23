@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d822f69-9e3c-4e2b-8ee1-11779bb646bd" name="Changes" comment="">
+    <list default="true" id="6d822f69-9e3c-4e2b-8ee1-11779bb646bd" name="Changes" comment="Issues with hash shifting, need to fix it">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WORK_LOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/WORK_LOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DNA.java" afterDir="false" />
@@ -112,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729271818003</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Issues with hash shifting, need to fix it">
+      <option name="closed" value="true" />
+      <created>1729284394400</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729284394400</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -121,6 +129,7 @@
     <MESSAGE value="Tried to make it run faster by converting strings to ints, did not work." />
     <MESSAGE value="Changed a bit to maybe optimize it but it runs the same :(" />
     <MESSAGE value="Changed all the code to use hashing, hashNextLetter does not work :(" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed all the code to use hashing, hashNextLetter does not work :(" />
+    <MESSAGE value="Issues with hash shifting, need to fix it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Issues with hash shifting, need to fix it" />
   </component>
 </project>

@@ -20,11 +20,6 @@ public class DNA
         return searchHashes(sequence, STR);
     }
 
-
-
-
-
-
     private static int searchHashes(String sequence, String target)
     {
         long targetHash = hashSingleString(target);
@@ -32,12 +27,8 @@ public class DNA
         int maxFound = 0;
         long currentHash = hashSingleString(sequence.substring(0, target.length()));
         int targetLength = target.length();
-        long adjustedRadix = 1;
+        long adjustedRadix = (long) Math.pow(RADIX, targetLength - 1);
 
-        for (int i = 0; i < targetLength - 1; i++)
-        {
-            adjustedRadix *= RADIX;
-        }
 
         for (int i = 0; i < sequence.length() - target.length(); i++)
         {
@@ -47,26 +38,33 @@ public class DNA
                 {
                     maxFound = currentNumFound;
                 }
+
+                for (int j = 0; j < targetLength; j++)
+                {
+                    currentHash = hashNextLetter
+                            (sequence.charAt(i + j), sequence.charAt(i + j + targetLength), currentHash, adjustedRadix);
+                }
+
                 i += target.length() - 1;
             }
             else
             {
                 currentNumFound = 0;
+                currentHash = hashNextLetter(sequence.charAt(i), sequence.charAt(i + targetLength), currentHash, adjustedRadix);
             }
-            currentHash = hashNextLetter(sequence.charAt(i), sequence.charAt(i + targetLength), currentHash, adjustedRadix);
         }
 
         return maxFound;
     }
 
-    // Something wrong with this I think.
+
     private static long hashNextLetter(char oldChar, char nextChar, long currentHash, long adjustedRadix)
     {
         // Remove the hash value for the first char.
         currentHash = ((currentHash) - mapChar(oldChar) * adjustedRadix);
 
         // Then add the next char
-        currentHash = ((currentHash) + mapChar(nextChar));
+        currentHash = ((currentHash * RADIX) + mapChar(nextChar));
 
         return currentHash;
     }
@@ -77,7 +75,7 @@ public class DNA
 
         for (int i = 0; i < str.length(); i++)
         {
-            hash = (RADIX * hash + mapChar(str.charAt(i)));
+            hash = ((hash * RADIX) + mapChar(str.charAt(i)));
         }
         return hash;
     }
