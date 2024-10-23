@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d822f69-9e3c-4e2b-8ee1-11779bb646bd" name="Changes" comment="Issues with hash shifting, need to fix it">
+    <list default="true" id="6d822f69-9e3c-4e2b-8ee1-11779bb646bd" name="Changes" comment="Might have broken last commmit?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WORK_LOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/WORK_LOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DNA.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +119,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729284394400</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Realized my issue with skipping by targetLength and not hashing each character that I skip, fixed it but still off by 1 for the largest test case.">
+      <option name="closed" value="true" />
+      <created>1729722515703</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1729722515703</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Might have broken last commmit?">
+      <option name="closed" value="true" />
+      <created>1729722626226</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729722626226</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -130,6 +145,8 @@
     <MESSAGE value="Changed a bit to maybe optimize it but it runs the same :(" />
     <MESSAGE value="Changed all the code to use hashing, hashNextLetter does not work :(" />
     <MESSAGE value="Issues with hash shifting, need to fix it" />
-    <option name="LAST_COMMIT_MESSAGE" value="Issues with hash shifting, need to fix it" />
+    <MESSAGE value="Realized my issue with skipping by targetLength and not hashing each character that I skip, fixed it but still off by 1 for the largest test case." />
+    <MESSAGE value="Might have broken last commmit?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Might have broken last commmit?" />
   </component>
 </project>

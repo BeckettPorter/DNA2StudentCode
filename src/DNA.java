@@ -22,54 +22,72 @@ public class DNA
 
     private static int searchHashes(String sequence, String target)
     {
-        long targetHash = hashSingleString(target);
+        // Instance variables.
+        final int targetLength = target.length();
+        final long targetHash = hashSingleString(target);
+        final long adjustedRadix = (long) Math.pow(RADIX, targetLength - 1);
         int currentNumFound = 0;
         int maxFound = 0;
         long currentHash = hashSingleString(sequence.substring(0, target.length()));
-        int targetLength = target.length();
-        long adjustedRadix = (long) Math.pow(RADIX, targetLength - 1);
 
 
+        // Go through the entire sequence character by character.
         for (int i = 0; i < sequence.length() - target.length(); i++)
         {
             if (currentHash == targetHash)
             {
+                // Check if 1 added to the current max streak found would be greater than our previously found max,
+                // and if so, then set the current number to the max found.
                 if (++currentNumFound > maxFound)
                 {
                     maxFound = currentNumFound;
                 }
 
+                // Add the hashes for the subsequent letters that are being skipped after a match is found.
                 for (int j = 0; j < targetLength; j++)
                 {
                     currentHash = hashNextLetter
                             (sequence.charAt(i + j), sequence.charAt(i + j + targetLength), currentHash, adjustedRadix);
                 }
 
-                i += target.length() - 1;
+                // Skip forward i by the targetLength - 1 to skip past the match.
+                i += targetLength - 1;
             }
             else
             {
+                // If no match was found, set the current number of matches found to 0 and just continue and hash
+                // the next letter.
                 currentNumFound = 0;
-                currentHash = hashNextLetter(sequence.charAt(i), sequence.charAt(i + targetLength), currentHash, adjustedRadix);
+                currentHash = hashNextLetter
+                        (sequence.charAt(i), sequence.charAt(i + targetLength), currentHash, adjustedRadix);
             }
         }
 
+        // Fix for the case in which it returns one minus the answer if all the streaks are in a row.
+        if (currentNumFound + 1 > maxFound)
+        {
+            return currentNumFound + 1;
+        }
         // Return the highest number of target matches found.
         return maxFound;
     }
 
-
+    // Method that shifts the hash by 1 char in a sequence, removing the hash from the leftmost character and adding
+    // the hash from the newly added rightmost character. This prevents the need to recalculate the entire hash
+    // unnecessarily.
     private static long hashNextLetter(char oldChar, char nextChar, long currentHash, long adjustedRadix)
     {
         // Remove the hash value for the first char.
         currentHash = ((currentHash) - mapChar(oldChar) * adjustedRadix);
 
-        // Then add the next char
+        // Then add the hash for the new char.
         currentHash = ((currentHash * RADIX) + mapChar(nextChar));
 
         return currentHash;
     }
 
+    // Method that gives me a hash for a single entire string, used to calculate the initial targetLength letters
+    // in the sequence.
     private static long hashSingleString(String str)
     {
         long hash = 0;
@@ -81,6 +99,7 @@ public class DNA
         return hash;
     }
 
+    // Helper method that maps the chars of a DNA sequence to values from 0 to 3.
     private static int mapChar(char c)
     {
         switch (c)
@@ -96,57 +115,4 @@ public class DNA
         }
         return -1;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // While loop that runs as long as the index is within the length of the sequence.
-//        while (index <= sequence.length() - strLength)
-//        {
-//            // Only bother checking for the STR if sequence at the current index is the same as the start of the STR.
-//            if (sequence.charAt(index) == firstSTRLetter && STR.equals(sequence.substring(index, index + strLength)))
-//            {
-//                // If incrementing the current number of STRs found in a row would be greater than the current max
-//                // number found in a row, set this new amount to the max found.
-//                if (++currentNumFound > maxFound)
-//                {
-//                    maxFound = currentNumFound;
-//                }
-//                // Skip ahead by strLength to avoid unnecessary checks.
-//                index += strLength;
-//            }
-//            // If the check for the STR failed, just set the current number of sequences found in a row to 0
-//            // and increment index.
-//            else
-//            {
-//                currentNumFound = 0;
-//                index++;
-//            }
-//        }
-//        return maxFound;
-//    }
 }
