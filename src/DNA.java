@@ -54,6 +54,7 @@ public class DNA
             }
         }
 
+        // Return the highest number of target matches found.
         return maxFound;
     }
 
