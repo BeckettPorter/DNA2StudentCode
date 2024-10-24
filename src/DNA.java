@@ -7,7 +7,7 @@
  *</p>
  * <p>
  * Completed by: Beckett Porter
- * Completed on: 10/9/2024
+ * Completed on: 10/24/2024
  *</p>
  */
 
@@ -17,9 +17,11 @@ public class DNA
 
     public static int STRCount(String sequence, String STR)
     {
+        // Call searchHashes and return it.
         return searchHashes(sequence, STR);
     }
 
+    // Method which goes through the sequence and finds the number of times the target is present in a series
     private static int searchHashes(String sequence, String target)
     {
         // Instance variables.
@@ -32,7 +34,7 @@ public class DNA
 
 
         // Go through the entire sequence character by character.
-        for (int i = 0; i < sequence.length() - target.length(); i++)
+        for (int i = 0; i < sequence.length() - targetLength; i++)
         {
             if (currentHash == targetHash)
             {
